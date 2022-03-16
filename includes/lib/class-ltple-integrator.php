@@ -2,69 +2,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class LTPLE_Integrator_Rewtemplate {
-	
-	var $parent;
-	var $apps;
-	var $term;
-	var $parameters;
-	var $data;
-	var $resourceUrl;
-	var $message;
-	
-	/**
-	 * Constructor function
-	 */
-	public function __construct ( $app_slug, $parent, $apps ) {
-		
-		$this->parent 		= $parent;
-		$this->parent->apps = $apps;
-		
-		// get app term
-
-		$this->term = get_term_by('slug',$app_slug,'app-type');
-		
-		// get app parameters
-		
-		$this->parameters = get_option('parameters_'.$app_slug);
-
-		if( isset($this->parameters['key']) ){
-
-			foreach($this->parameters['key'] as $i => $key){
-				
-				if( $key == 'resource' ){
-					
-					// get app resource
-					
-					$this->resourceUrl = $this->parameters['value'][$i];	
-				}
-			}
-			
-			// get current action
-			
-			if(!empty($_REQUEST['action'])){
-				
-				$this->action = $_REQUEST['action'];
-			}
-			elseif(!empty($_SESSION['action'])){
-				
-				$this->action = $_SESSION['action'];
-			}
-			
-			$methodName = 'app'.ucfirst($this->action);
-
-			if(method_exists($this,$methodName)){
-				
-				$this->$methodName();
-			}
-		}
-	}
-	
-	public function init_app(){
-		
-		return true;
-	}
-	
+class LTPLE_Integrator_Rewtemplate extends LTPLE_Client_Integrator {
 	
 	public function appConnect(){
 
@@ -171,31 +109,33 @@ class LTPLE_Integrator_Rewtemplate {
 						
 						$this->parent->apps->newAppConnected();
 						
-						$_SESSION['message'] = '<div class="alert alert-success" style="margin-bottom:0;">';
+						$message = '<div class="alert alert-success" style="margin-bottom:0;">';
 							
-							$_SESSION['message'] .= 'Congratulations, you have successfully connected your ' . $this->term->name . ' account!';
+							$message .= 'Congratulations, you have successfully connected your ' . $this->term->name . ' account!';
 								
-						$_SESSION['message'] .= '</div>';
+						$message .= '</div>';
 					}
 					else{
 
-						$_SESSION['message'] = '<div class="alert alert-warning" style="margin-bottom:0;">';
+						$message = '<div class="alert alert-warning" style="margin-bottom:0;">';
 							
-							$_SESSION['message'] .= 'Something went wrong...';
+							$message .= 'Something went wrong...';
 								
-						$_SESSION['message'] .= '</div>';						
-					}	
+						$message .= '</div>';					
+					}
 				}
 				else{
 
 					$app_id = $app_item->ID;
 					
-					$_SESSION['message'] = '<div class="alert alert-info" style="margin-bottom:0;">';
+					$message = '<div class="alert alert-info" style="margin-bottom:0;">';
 						
-						$_SESSION['message'] .= 'This app is already connected...';
+						$message .= 'This app is already connected...';
 							
-					$_SESSION['message'] .= '</div>';
+					$message .= '</div>';
 				}
+				
+				$this->parent->session->update_user_data('message',$message);
 
 				// update app item
 					
