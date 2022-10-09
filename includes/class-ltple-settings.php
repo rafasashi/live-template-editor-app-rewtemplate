@@ -2,10 +2,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class LTPLE_App_Rewtemplate_Settings {
+class LTPLE_App_Boilerplate_Class_Settings {
 
 	/**
-	 * The single instance of LTPLE_App_Rewtemplate_Settings.
+	 * The single instance of LTPLE_App_Boilerplate_Class_Settings.
 	 * @var 	object
 	 * @access  private
 	 * @since 	1.0.0
@@ -41,7 +41,7 @@ class LTPLE_App_Rewtemplate_Settings {
 		$this->parent = $parent;
 		
 		$this->plugin 		 	= new stdClass();
-		$this->plugin->slug  	= 'live-template-editor-app-rewtemplate';
+		$this->plugin->slug  	= 'live-template-editor-app-boilerplate-slug';
 		
 		add_action('ltple_plugin_settings', array($this, 'plugin_info' ) );
 		
@@ -52,13 +52,13 @@ class LTPLE_App_Rewtemplate_Settings {
 	
 	public function plugin_info(){
 		
-		$this->parent->settings->addons['app-rewtemplate-plugin'] = array(
+		$this->parent->settings->addons['app-boilerplate-slug-plugin'] = array(
 			
-			'title' 		=> 'App Rewtemplate Plugin',
-			'addon_link' 	=> 'https://github.com/rafasashi/live-template-editor-app-rewtemplate',
-			'addon_name' 	=> 'live-template-editor-app-rewtemplate',
-			'source_url' 	=> 'https://github.com/rafasashi/live-template-editor-app-rewtemplate/archive/master.zip',
-			'description'	=> 'Rewtemplate API integrator for Live Template Editor',
+			'title' 		=> 'App Boilerplate_Class Plugin',
+			'addon_link' 	=> 'https://github.com/rafasashi/live-template-editor-app-boilerplate-slug',
+			'addon_name' 	=> 'live-template-editor-app-boilerplate-slug',
+			'source_url' 	=> 'https://github.com/rafasashi/live-template-editor-app-boilerplate-slug/archive/master.zip',
+			'description'	=> 'App Name API integrator for Live Template Editor',
 			'author' 		=> 'Rafasashi',
 			'author_link' 	=> 'https://profiles.wordpress.org/rafasashi/',
 		);		
@@ -78,12 +78,12 @@ class LTPLE_App_Rewtemplate_Settings {
 	 */
 	public function add_menu_items () {
 		
-		//add menu in rewtemplate dashboard
+		//add menu in apps dashboard
 		/*
 		add_submenu_page(
 			'live-template-editor-client',
-			__( 'App Rewtemplate', $this->plugin->slug ),
-			__( 'App Rewtemplate', $this->plugin->slug ),
+			__( 'App App Name', $this->plugin->slug ),
+			__( 'App App Name', $this->plugin->slug ),
 			'edit_pages',
 			'edit.php?post_type=post'
 		);

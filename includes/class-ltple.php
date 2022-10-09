@@ -2,10 +2,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class LTPLE_App_Rewtemplate extends LTPLE_Client_App {
+class LTPLE_App_Boilerplate_Class extends LTPLE_Client_App {
 
 	/**
-	 * The single instance of LTPLE_App_Rewtemplate.
+	 * The single instance of LTPLE_App_Boilerplate_Class.
 	 * @var 	object
 	 * @access  private
 	 * @since 	1.0.0
@@ -49,9 +49,9 @@ class LTPLE_App_Rewtemplate extends LTPLE_Client_App {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 10, 1 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), 10, 1 );
 		
-		$this->settings = new LTPLE_App_Rewtemplate_Settings( $this->parent );
+		$this->settings = new LTPLE_App_Boilerplate_Class_Settings( $this->parent );
 		
-		$this->admin = new LTPLE_App_Rewtemplate_Admin_API( $this );
+		$this->admin = new LTPLE_App_Boilerplate_Class_Admin_API( $this );
 
 		if ( !is_admin() ) {
 
@@ -90,14 +90,14 @@ class LTPLE_App_Rewtemplate extends LTPLE_Client_App {
 		/*
 		$apps = $this->parent->apps->get_terms( 'app-type', array(
 			
-			'rewtemplate' => array(
+			'boilerplate-slug' => array(
 			
-				'name' 		=> 'Rewtemplate',
+				'name' 		=> 'App Name',
 				'options' 	=> array(
 				
 					'thumbnail' => $this->assets_url . 'app-icon.png',
 					'types' 	=> array('networks','blogs','images'),
-					'api_client'=> 'rewtemplate',
+					'api_client'=> 'boilerplate-slug',
 					'parameters'=> array (
 					
 						'input' => array ( 'password', 'password', 'password' ),
@@ -148,7 +148,7 @@ class LTPLE_App_Rewtemplate extends LTPLE_Client_App {
 	/*
 	public function get_user_profile_url($app){
 		
-		return 'https://' . $app->user_name . '.rewtemplate.com';
+		return 'https://' . $app->user_name . '.example.com';
 	}						
 	
 	public function get_social_icon_url($app){
@@ -267,14 +267,14 @@ class LTPLE_App_Rewtemplate extends LTPLE_Client_App {
 	} // End load_plugin_textdomain ()
 
 	/**
-	 * Main LTPLE_App_Rewtemplate Instance
+	 * Main LTPLE_App_Boilerplate_Class Instance
 	 *
-	 * Ensures only one instance of LTPLE_App_Rewtemplate is loaded or can be loaded.
+	 * Ensures only one instance of LTPLE_App_Boilerplate_Class is loaded or can be loaded.
 	 *
 	 * @since 1.0.0
 	 * @static
-	 * @see LTPLE_App_Rewtemplate()
-	 * @return Main LTPLE_App_Rewtemplate instance
+	 * @see LTPLE_App_Boilerplate_Class()
+	 * @return Main LTPLE_App_Boilerplate_Class instance
 	 */
 	public static function instance ( $file = '', $version = '1.0.0' ) {
 		if ( is_null( self::$_instance ) ) {

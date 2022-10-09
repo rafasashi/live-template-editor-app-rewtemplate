@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: Live Template Editor App Rewtemplate
+ * Plugin Name: Live Template Editor App App Name
  * Version: 1.0.0.2
  * Plugin URI: https://github.com/rafasashi
- * Description: Rewtemplate API integrator for Live Template Editor.
+ * Description: App Name API integrator for Live Template Editor.
  * Author: Rafasashi
  * Author URI: https://github.com/rafasashi
  * Requires at least: 4.6
@@ -25,20 +25,20 @@
 	if ( ! defined( 'ABSPATH' ) ) exit;
 	
 	/**
-	 * Returns the main instance of LTPLE_App_Rewtemplate to prevent the need to use globals.
+	 * Returns the main instance of LTPLE_App_Boilerplate_Class to prevent the need to use globals.
 	 *
 	 * @since  1.0.0
-	 * @return object LTPLE_App_Rewtemplate
+	 * @return object LTPLE_App_Boilerplate_Class
 	 */
-	function LTPLE_App_Rewtemplate ( $version = '1.0.0' ) {
+	function LTPLE_App_Boilerplate_Class ( $version = '1.0.0' ) {
 		
 		$instance = LTPLE_Client::instance( __FILE__, $version );
 		
-		if ( empty( $instance->App_Rewtemplate ) ) {
+		if ( empty( $instance->App_Boilerplate_Class ) ) {
 			
-			$instance->App_Rewtemplate = new stdClass();
+			$instance->App_Boilerplate_Class = new stdClass();
 			
-			$instance->App_Rewtemplate = LTPLE_App_Rewtemplate::instance( __FILE__, $instance, $version );
+			$instance->App_Boilerplate_Class = LTPLE_App_Boilerplate_Class::instance( __FILE__, $instance, $version );
 		}
 
 		return $instance;
@@ -63,5 +63,5 @@
 			require_once( $file );
 		}
 
-		LTPLE_App_Rewtemplate('1.1.0');	
+		LTPLE_App_Boilerplate_Class('1.1.0');	
 	});

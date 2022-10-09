@@ -1,2 +1,2 @@
-# live-template-editor-app-rewtemplate
-Rewtemplate API integrator for Live Template Editor
+# live-template-editor-app-boilerplate-slug
+App Name API integrator for Live Template Editor

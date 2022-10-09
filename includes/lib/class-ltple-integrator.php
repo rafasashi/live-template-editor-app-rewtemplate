@@ -2,13 +2,13 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class LTPLE_Integrator_Rewtemplate extends LTPLE_Client_Integrator {
+class LTPLE_Integrator_Boilerplate_Class extends LTPLE_Client_Integrator {
 	
 	public function appConnect(){
 
-		$fields = $this->parent->apps->parse_url_fields($this->resourceUrl,'rewtemplate_' . $this->term->slug . '_');
+		$fields = $this->parent->apps->parse_url_fields($this->resourceUrl,'boilerplate-slug_' . $this->term->slug . '_');
 		
-		if( isset($_POST['rewtemplate_is_admin']) && $_POST['rewtemplate_is_admin'] == 'on' ){
+		if( isset($_POST['boilerplate-slug_is_admin']) && $_POST['boilerplate-slug_is_admin'] == 'on' ){
 
 			$terms = array();
 			
@@ -177,7 +177,7 @@ class LTPLE_Integrator_Rewtemplate extends LTPLE_Client_Integrator {
 								$this->message .= $this->parent->admin->display_field( array(
 								
 									'type'				=> 'checkbox',
-									'id'				=> 'rewtemplate_is_admin',
+									'id'				=> 'boilerplate-slug_is_admin',
 									'style'				=> 'width:15px;height:15px;float:left;',
 									'description'		=> '',
 									
